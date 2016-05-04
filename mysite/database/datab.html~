@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display DATABASE Data in Datatables </title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function () {
+    				$.getJSON("http://127.0.0.1:8000/",function (json) {
+       					 var tr;
+       					 for (var i = 0; i < json.length; i++) {
+           				 tr = $('<tr/>');
+            				 tr.append("<td>" + json[i].fid + "</td>");
+            				 tr.append("<td>" + json[i].fname + "</td>");
+            				 $('table').append(tr);
+       				 }
+    				});
+					});
+</script>
+</head>
+<body>
+
+<table id="faculty_Table"  border="1" width="100%" >
+ <tr>
+           <th>fid</th>
+           <th>fname</th>
+	  
+  </tr>
+</table>
+</html>

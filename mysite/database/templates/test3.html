@@ -1,0 +1,42 @@
+<html ng-app="countryApp">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<title> Data Table</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
+ 
+    <script>  
+    countryApp = angular.module('countryApp', []);
+    countryApp.controller('CountryCtrl', function ($scope, $http){
+	        $http.get('reults.json').success(function(response) {
+	          $scope.mydata = response;
+		   $scope.$apply();
+
+	        });
+
+	      });
+  
+    </script>
+</head>
+
+<body ng-controller="CountryCtrl">
+<h2>Angular.js JSON Fetching Example</h2>
+<table border=1>
+<tr ng-repeat="data in mydata">
+<th>FACULTY FNAME</th>
+<th>FACULTY FID</th>
+</tr>
+<tr ng-repeat="data in mydata ">
+       <td>{{data.fid}}</td>
+        <td>{{data.fname}}</td>
+ </tr>
+
+	    </table>
+</div>
+	
+  </body>
+
+	</html>
+</html>

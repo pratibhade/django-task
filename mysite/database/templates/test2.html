@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="results">
+<head>
+<title> Data Table</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script> 
+<script type="text/javascript">
+var results = angular.module('results', []);
+results.controller('resultsCtrl', function($scope, $http) {
+$http.get("results").success(function (response) {
+/*After Successfully fetch the data from JSON file assigning these data to $scope object variable*/
+$scope.members = response.results;
+});
+});
+</script>
+<style type="text/css">
+/*Style for Table*/
+table, th , td {
+border: 1px solid grey;
+border-collapse: collapse;
+padding: 4px;
+font-family: arial;
+}
+/*Style for Table Header*/
+th {
+background: darkblue;
+color: white;
+text-align: left;
+}
+/*Style for Alternate Rows*/
+table tr:nth-child(odd) {
+background-color: #C2EBC3;
+}
+table tr:nth-child(even) {
+background-color: #FFFFFF;
+}
+</style>
+</head>
+<body ng-controller="resultsCtrl">
+<table>
+<tr>
+<th>fname</th>
+<th>fid</th>
+</tr>
+<tr ng-repeat="indivisual in members">
+<td>{{ indivisual.fname }}</td>
+<td>{{ indivisual.fid }}</td>
+</tr>
+</table>
+</body>
+</html>
+</html>
